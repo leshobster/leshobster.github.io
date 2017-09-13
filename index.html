@@ -7,7 +7,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
         <style>
-
             html, body { width: 100%; height: 100%; margin: 0; }
             div { width: 100%; height: 50%; background: url(images/1.jpg); }
             div + div { background: url('images/2.jpg'); }
@@ -17,7 +16,11 @@
         <div></div>
         <div></div>
         <script>
-
+            var base = window.location
+            console.log(base)
+            document.querySelectorAll('style').forEach(function(element) {
+                console.log(element.innerHTML.replace(/url\(\s?(?:'|")?(?!data|http|\/\/)[\/]?(.+?)(?:'|")?\s?\)/gi, 'url($1)'));
+            }, this);
         </script>
     </body>
 </html>
