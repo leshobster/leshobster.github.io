@@ -16,10 +16,19 @@
         <div></div>
         <div></div>
         <script>
-            var base = window.location
-            console.log()
+            var base = window.location.port + '//' + window.location.host;
+            var path = window.location.path.split('/');
+            if (path[path.length - 1].indexOf('.') !== -1)
+                path = path.splice(path.length - 1, 1);
+            path.join('/');
+            console.log(path);
             document.querySelectorAll('style').forEach(function(element) {
-                console.log(element.innerHTML.replace(/url\(\s?(?:'|")?(?!data|http|\/\/)[\/]?(.+?)(?:'|")?\s?\)/gi, 'url(' + base.protocol + '//' + base.host + base.pathname + '$1)'));
+                element.innerHTML.replace(/url\(\s?(?:'|")?(?!data|http|\/\/)(.+?)(?:'|")?\s?\)/gi, function(match, url) {
+                    if (url.substr(0, 1) === '/')
+                        return base + url;
+                    else
+                        return base + path + url;
+                });
             }, this);
         </script>
     </body>
