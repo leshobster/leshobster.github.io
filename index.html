@@ -17,9 +17,9 @@
         <div></div>
         <script>
             var base = window.location
-            console.log(base)
+            console.log()
             document.querySelectorAll('style').forEach(function(element) {
-                console.log(element.innerHTML.replace(/url\(\s?(?:'|")?(?!data|http|\/\/)[\/]?(.+?)(?:'|")?\s?\)/gi, 'url($1)'));
+                console.log(element.innerHTML.replace(/url\(\s?(?:'|")?(?!data|http|\/\/)[\/]?(.+?)(?:'|")?\s?\)/gi, 'url(' + base.protocol + '//' + base.host + base.pathname + '$1)'));
             }, this);
         </script>
     </body>
