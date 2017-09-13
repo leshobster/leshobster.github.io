@@ -15,17 +15,6 @@
     <body>
         <div></div>
         <div></div>
-        <script>
-            var base = window.location.protocol + '//' + window.location.host;
-            var path = window.location.pathname.substr(0, window.location.pathname.lastIndexOf('/') + 1)
-            document.querySelectorAll('style').forEach(function(element) {
-                console.log(element.innerHTML.replace(/url\(\s?(?:'|")?(?!data|http|\/\/)(.+?)(?:'|")?\s?\)/gi, function(match, url) {
-                    if (url.substr(0, 1) === '/')
-                        return base + url;
-                    else
-                        return base + path + url;
-                }));
-            }, this);
-        </script>
+        
     </body>
 </html>
