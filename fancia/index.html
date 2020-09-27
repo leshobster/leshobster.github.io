@@ -22,7 +22,7 @@
         img {
             animation: flip .1s infinite linear;
         }
-        img:hover {
+        .stop {
             animation: none;
         }
         h1 { text-align: center; margin: 0 0 1rem; }
@@ -41,7 +41,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            margin: 0;
+            margin: 0 auto;
             width: 100%;
             height: 0;
             max-width: 600px;
@@ -86,7 +86,8 @@
         var img = document.querySelector('img');
         var btn  = document.querySelector('button');
         sound.addEventListener("canplaythrough", event => {
-            img.addEventListener('mouseover', e => {
+            img.addEventListener('click', e => {
+                img.classList.add('stop');
                 sound.play();
                 setTimeout(() => {
                     img.closest('.step').classList.add('out');
